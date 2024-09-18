@@ -3,6 +3,7 @@
 
 {% block content %}
 <div class="container mt-5">
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
     {% for p in products %}
     <div class="row">
         <div class="col-md-4">
