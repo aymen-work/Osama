@@ -8,8 +8,9 @@ from .models import Product
 def index(request):
     try:
         if request.session['token']:
-            respons = requests.get('https://fakestoreapi.com/products')
-            products = respons.json()
+            # respons = requests.get('https://fakestoreapi.com/products')
+            # products = respons.json()
+            products = Product.objects.all()
             return render(request, 'index.html', {'products': products})
     except Exception as e:
         print('Error⚠️⚠️⚠️⚠️: %s' % e)
