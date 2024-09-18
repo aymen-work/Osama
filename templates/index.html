@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock  %}
+
+{% block content %}
+<div class="container mt-5">
+    {% for p in products %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ p.image }}" class="card-img-top w-25 h-25" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.title }}</h5>
+                    <p class="card-text">${{ p.price }}</p>
+                    <p class="card-text">{{ p.description }}</p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock  %}
