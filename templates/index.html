@@ -4,6 +4,7 @@
 {% block content %}
 <div class="container mt-5">
     <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    <a href="{% url 'add' %}" class="btn btn-primary">Add product to DB</a>
     {% for p in products %}
     <div class="row">
         <div class="col-md-4">

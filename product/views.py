@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 import requests
 from django.contrib.auth.decorators import login_required
+from .models import Product
 # Create your views here.
 
 
@@ -11,8 +12,15 @@ def index(request):
             products = respons.json()
             return render(request, 'index.html', {'products': products})
     except Exception as e:
-        print('Error: %s' % e)
+        print('Error⚠️⚠️⚠️⚠️: %s' % e)
         return redirect('login')
+
+def add_product(request):
+    respons = requests.get('https://fakestoreapi.com/products')
+    products = respons.json()
+    for p in products:
+        Product.objects.create(title=p['title'], price=p['price'], description=p['description'], image=p['image'])
+    return redirect('index')
 
 
 def login_page(request):
