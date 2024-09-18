@@ -5,11 +5,14 @@ from django.contrib.auth.decorators import login_required
 
 
 def index(request):
-    if request.session['token']:
-        respons = requests.get('https://fakestoreapi.com/products')
-        products = respons.json()
-        return render(request, 'index.html', {'products': products})
-    return redirect('login')
+    try:
+        if request.session['token']:
+            respons = requests.get('https://fakestoreapi.com/products')
+            products = respons.json()
+            return render(request, 'index.html', {'products': products})
+    except Exception as e:
+        print('Error: %s' % e)
+        return redirect('login')
 
 
 def login_page(request):
